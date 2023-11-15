@@ -7,6 +7,7 @@
 	let generated = false;
 	let url = "";
 	let vertical = false;
+	const disableNewTabDownload = true;
 
 	function dataURLtoBlob(dataURL: string) {
 		let binary = atob(dataURL.split(",")[1]);
@@ -89,7 +90,7 @@
 				</div>
 
 				{#if generated}
-					<Button href={url} download="profilePicture.png"><DownloadSolid class="mr-2" /> Download</Button>
+					<Button href={url} target={disableNewTabDownload ? undefined : "_blank"} download={disableNewTabDownload ? undefined : "profilePicture.png"}><DownloadSolid class="mr-2" /> Download</Button>
 				{/if}
 			</div>
 		</Card>
