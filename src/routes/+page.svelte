@@ -89,7 +89,7 @@
 				</div>
 
 				{#if generated}
-					<Button href={url} target="_blank" download="profilePicture.png"><DownloadSolid class="mr-2" /> Download</Button>
+					<Button href={url} download="profilePicture.png"><DownloadSolid class="mr-2" /> Download</Button>
 				{/if}
 			</div>
 		</Card>
