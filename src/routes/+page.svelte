@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Button, Card } from "flowbite-svelte";
+	import { Button, Card, Img } from "flowbite-svelte";
 	import { DownloadSolid, ImageSolid, ChevronUpSolid, ChevronDownSolid, ChevronSortSolid } from "flowbite-svelte-icons";
 
 	let fileInput: HTMLInputElement;
@@ -7,7 +7,6 @@
 	let generated = false;
 	let url = "";
 	let vertical = false;
-	const disableNewTabDownload = true;
 
 	function dataURLtoBlob(dataURL: string) {
 		let binary = atob(dataURL.split(",")[1]);
@@ -67,6 +66,7 @@
 		<Card size="lg">
 			<div class="flex flex-col gap-4">
 				<img src="CoverPhoto.jpg" alt="Cover" class="w-full h-auto" />
+
 				<Button color="alternative" on:click={() => fileInput.click()} fullWidth><ImageSolid class="mr-2" /> Choose Image</Button>
 				<div class="hidden">
 					<input
@@ -78,9 +78,14 @@
 					/>
 				</div>
 
-				<div class="hidden" class:!block={generated}>
+				<div class="hidden">
 					<canvas bind:this={canvas} width="1080" height="1080" class="rounded-lg border overflow-hidden w-full" />
 				</div>
+
+				{#if generated}
+					<Img src={url} />
+					<p>You can save this photo. On mobile, press and hold this photo then save image.</p>
+				{/if}
 
 				<div class="grid grid-cols-3 gap-3 border-b pb-4" class:!hidden={!vertical || !generated}>
 					<div class="col-span-3 text-sm">Position image:</div>
@@ -88,10 +93,6 @@
 					<Button color="light" on:click={(e) => changePhoto("center")}><ChevronSortSolid class="w-4 h-4" /></Button>
 					<Button color="light" on:click={(e) => changePhoto("bottom")}><ChevronDownSolid class="w-3 h-3" /></Button>
 				</div>
-
-				{#if generated}
-					<Button href={url} target={disableNewTabDownload ? undefined : "_blank"} download={disableNewTabDownload ? undefined : "profilePicture.png"}><DownloadSolid class="mr-2" /> Download</Button>
-				{/if}
 			</div>
 		</Card>
 	</div>
