@@ -65,7 +65,7 @@
 	<div class="w-full max-w-lg mt-8">
 		<Card size="lg">
 			<div class="flex flex-col gap-4">
-				<img src="CoverPhoto.jpg" alt="Cover" class="w-full h-auto" />
+				<img src="coverPhoto.jpg" alt="Cover" class="w-full h-auto" />
 
 				<Button color="alternative" on:click={() => fileInput.click()} fullWidth><ImageSolid class="mr-2" /> Choose Image</Button>
 				<div class="hidden">
@@ -87,7 +87,7 @@
 					<p>You can save this photo. On mobile, press and hold this photo then save image.</p>
 				{/if}
 
-				<div class="grid grid-cols-3 gap-3 border-b pb-4" class:!hidden={!vertical || !generated}>
+				<div class="grid grid-cols-3 gap-3" class:!hidden={!vertical || !generated}>
 					<div class="col-span-3 text-sm">Position image:</div>
 					<Button color="light" on:click={(e) => changePhoto("top")}><ChevronUpSolid class="w-3 h-3" /></Button>
 					<Button color="light" on:click={(e) => changePhoto("center")}><ChevronSortSolid class="w-4 h-4" /></Button>
