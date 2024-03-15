@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Button, Card, Img } from "flowbite-svelte";
-	import { DownloadSolid, ImageSolid, ChevronUpSolid, ChevronDownSolid, ChevronSortSolid } from "flowbite-svelte-icons";
+	import { ImageSolid, ChevronUpSolid, ChevronDownSolid, ChevronSortSolid } from "flowbite-svelte-icons";
 
 	let fileInput: HTMLInputElement;
 	let canvas: HTMLCanvasElement;
@@ -65,7 +65,7 @@
 	<div class="w-full max-w-lg mt-8">
 		<Card size="lg">
 			<div class="flex flex-col gap-4">
-				<img src="coverPhoto.jpg" alt="Cover" class="w-full h-auto" />
+				<img src="cover-photo.jpg" alt="Cover" class="w-full h-auto" />
 
 				<Button color="alternative" on:click={() => fileInput.click()} fullWidth><ImageSolid class="mr-2" /> Choose Image</Button>
 				<div class="hidden">
@@ -89,9 +89,9 @@
 
 				<div class="grid grid-cols-3 gap-3" class:!hidden={!vertical || !generated}>
 					<div class="col-span-3 text-sm">Position image:</div>
-					<Button color="light" on:click={(e) => changePhoto("top")}><ChevronUpSolid class="w-3 h-3" /></Button>
-					<Button color="light" on:click={(e) => changePhoto("center")}><ChevronSortSolid class="w-4 h-4" /></Button>
-					<Button color="light" on:click={(e) => changePhoto("bottom")}><ChevronDownSolid class="w-3 h-3" /></Button>
+					<Button color="light" on:click={() => changePhoto("top")}><ChevronUpSolid class="w-3 h-3" /></Button>
+					<Button color="light" on:click={() => changePhoto("center")}><ChevronSortSolid class="w-4 h-4" /></Button>
+					<Button color="light" on:click={() => changePhoto("bottom")}><ChevronDownSolid class="w-3 h-3" /></Button>
 				</div>
 			</div>
 		</Card>
